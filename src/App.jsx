@@ -19,20 +19,40 @@ function App(props){
 
       }
 
+      function deleteItem(id){
+
+            setNotes((prevValue=>{
+                  return prevValue.filter((founditem,index)=>{
+                        return index !== id;
+                  })
+            }))
+
+      }
+
       
  
       return <div>
             <Header />
-           
+
             <Area 
                   onAdd={Addnote}
             />
 
-            {notes.map((foundItem) => {
-                  return <Template title={foundItem.title} content={foundItem.content} />
+           
+            
+
+            {notes.map((foundItem,index) => {
+                  return <Template 
+                  key={index}
+                  id={index}
+                  title={foundItem.title} 
+                  content={foundItem.content}
+                  onDelete={deleteItem}
+                   />
 
             })}
 
+            
             
 
             <Footer />

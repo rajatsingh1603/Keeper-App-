@@ -20,6 +20,11 @@ function Area(props){
 
     function addnote(event){
 
+        setnote({
+            title: "",
+            content: ""
+          });
+
         event.preventDefault();
         props.onAdd(note);
 
